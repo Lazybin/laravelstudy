@@ -1,4 +1,3 @@
-<?php echo phpinfo();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,13 +42,24 @@
                         <h3 class="panel-title">请登录</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                        <form role="form" method="POST" action="{{ url('/auth/login') }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="电子邮箱" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="电子邮箱" value="{{ old('email') }}" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="密码" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="密码" value="{{ old('password') }}" name="password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -57,7 +67,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">登陆</a>
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="登录"/>
                             </fieldset>
                         </form>
                     </div>
