@@ -52,45 +52,25 @@
                             </ul>
                         </div>
                     @endif
-                        <form role="form" method="POST" action="{{ url('/auth/login') }}">
+                        <form role="form" method="POST" action="{{ url('/auth/register') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" >
 
+                        <div class="form-group">
+                            <input type="name" class="form-control" name="name" value="{{ old('name') }}" placeholder="用户名" value="{{ old('name') }}" autofocus>
+                        </div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
+							<input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="电子邮箱" value="{{ old('email') }}" >
 						</div>
-
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
+							<input type="password" class="form-control" name="password" name="password" placeholder="确认密码" value="{{ old('password') }}">
 						</div>
-
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
+							<input type="password" class="form-control" name="password_confirmation" placeholder="确认密码" value="{{ old('password_confirmation') }}">
 						</div>
-
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="注册"/>
 						</div>
                             </fieldset>
                         </form>

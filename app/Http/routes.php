@@ -11,8 +11,10 @@
 |
 */
 Route::get('auth/login','Auth\AuthController@getLogin');
+Route::get('auth/register','Auth\AuthController@getRegister');
+Route::post('auth/register','Auth\AuthController@postRegister');
 
 Route::post('auth/login','Auth\AuthController@postLogin');
 Route::group(['middleware'=>'auth'],function (){
-    Route::get('/','HomeController@index');
+    Route::get('/home','HomeController@index');
 });
